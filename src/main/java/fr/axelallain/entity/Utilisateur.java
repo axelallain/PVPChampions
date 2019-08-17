@@ -44,6 +44,21 @@ public class Utilisateur implements Serializable {
 	@Column(name = "nom", nullable = false)
 	private String nom;
 	
+	@Column(name = "ville", nullable = true)
+	private String ville;
+	
+	@Column(name = "pays", nullable = false)
+	private String pays;
+	
+	@Column(name = "codePostal", nullable = false)
+	private String codePostal;
+	
+	@Column(name = "description", nullable = true)
+	private String description;
+	
+	@ManyToMany
+	private Collection<Serveur> serveurs;
+	
 	@Column(name = "image")
 	private String image;
 	
@@ -97,6 +112,46 @@ public class Utilisateur implements Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
+	}
+
+	public String getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Collection<Serveur> getServeurs() {
+		return serveurs;
+	}
+
+	public void setServeurs(Collection<Serveur> serveurs) {
+		this.serveurs = serveurs;
 	}
 
 	public String getImage() {

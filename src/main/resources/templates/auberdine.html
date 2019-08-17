@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="img/favicon.ico">
+	<link rel="icon" type="image/png" th:href="@{/img/favicon.png}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Auberdine - PVPChampions</title>
@@ -12,23 +12,23 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="css/animate.min.css" rel="stylesheet"/>
+    <link th:href="@{/css/animate.min.css}" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
-    <link href="css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+    <link th:href="@{/css/light-bootstrap-dashboard.css?v=1.4.0}" rel="stylesheet"/>
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="css/demo.css" rel="stylesheet" />
+    <link th:href="@{/css/demo.css}" rel="stylesheet" />
 
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link th:href="@{/css/pe-icon-7-stroke.css}" rel="stylesheet" />
 
 </head>
 <body>
@@ -46,7 +46,7 @@
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="index.html" class="simple-text">
-                    <img src="img/logo.png" alt="Logo" width="100%">
+                    <img th:src="@{/img/logo.png}" alt="Logo" width="100%">
                 </a>
             </div>
 
@@ -162,7 +162,7 @@
                                 <p class="category">Nom du serveur</p>
                             </div>
                             <div class="content">
-                                <img src="img/ragefire.jpg" alt="Event image" width="100%">
+                                <img th:src="@{/img/ragefire.jpg}" alt="Event image" width="100%">
                                 <div class="footer">
                                     <div class="stats">
                                         <i class="fa fa-check"></i> 5 / 5 Joueurs
@@ -179,7 +179,7 @@
                                 <p class="category">Nom du serveur</p>
                             </div>
                             <div class="content">
-                                <img src="img/ragefire.jpg" alt="Event image" width="100%">
+                                <img th:src="@{/img/ragefire.jpg}" alt="Event image" width="100%">
                                 <div class="footer">
                                     <div class="stats">
                                         <i class="fa fa-check"></i> 3 / 5 Joueurs
@@ -196,7 +196,7 @@
                                 <p class="category">Nom du serveur</p>
                             </div>
                             <div class="content">
-                                <img src="img/ragefire.jpg" alt="Event image" width="100%">
+                                <img th:src="@{/img/ragefire.jpg}" alt="Event image" width="100%">
                                 <div class="footer">
                                     <div class="stats">
                                         <i class="fa fa-check"></i> 1 / 5 Joueurs
@@ -213,7 +213,7 @@
                                 <p class="category">Nom du serveur</p>
                             </div>
                             <div class="content">
-                                <img src="img/ragefire.jpg" alt="Event image" width="100%">
+                                <img th:src="@{/img/ragefire.jpg}" alt="Event image" width="100%">
                                 <div class="footer">
                                     <div class="stats">
                                         <i class="fa fa-check"></i> 37 / 40 Joueurs
@@ -251,22 +251,22 @@
 </body>
 
     <!--   Core JS Files   -->
-    <script src="js/jquery.3.2.1.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script th:src="@{/js/jquery.3.2.1.min.js}" type="text/javascript"></script>
+	<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
 
 	<!--  Charts Plugin -->
-	<script src="js/chartist.min.js"></script>
+	<script th:src="@{/js/chartist.min.js}"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="js/bootstrap-notify.js"></script>
+    <script th:src="@{/js/bootstrap-notify.js}"></script>
 
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+	<script th:src="@{/js/light-bootstrap-dashboard.js?v=1.4.0}"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="js/demo.js"></script>
+	<script th:src="@{/js/demo.js}"></script>
 
 </html>
