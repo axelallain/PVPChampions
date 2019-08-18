@@ -16,12 +16,12 @@ public class MyUserDetailsService implements UserDetailsService {
 	private UtilisateurService utilisateurService;
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		
-		Utilisateur utilisateur = utilisateurService.findByUsername(username);
+		Utilisateur utilisateur = utilisateurService.findByEmail(email);
 		
 		if(utilisateur == null) {
-			throw new UsernameNotFoundException("Cet utilisateur n'existe pas");
+			throw new UsernameNotFoundException("Les identifiants sont incorrects ou ce compte n'existe pas.");
 		}
 		
 		return new UserPrincipal(utilisateur);

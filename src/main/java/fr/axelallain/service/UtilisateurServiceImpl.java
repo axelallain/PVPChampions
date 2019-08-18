@@ -27,8 +27,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public Utilisateur findByUsername(String username) {
-		return utilisateurDao.findByUsername(username);
+	public Utilisateur findByEmail(String email) {
+		return utilisateurDao.findByEmail(email);
 	}
 	
 }

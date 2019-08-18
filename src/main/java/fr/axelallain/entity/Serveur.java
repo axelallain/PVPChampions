@@ -4,10 +4,12 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,4 +28,7 @@ public class Serveur {
 	
 	@ManyToMany(mappedBy="serveurs")
 	private Collection<Utilisateur> utilisateurs;
+	
+	@OneToMany(mappedBy="serveur", fetch = FetchType.EAGER)
+	private Collection<Event> events;
 }

@@ -29,13 +29,13 @@ public class Utilisateur implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name = "username", unique = true, nullable = false)
+	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 	
 	@Column(name = "password", nullable = false)
 	private String password;
 	
-	@Column(name = "email", unique = true, nullable = false)
+	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	
 	@Column(name = "prenom", nullable = false)

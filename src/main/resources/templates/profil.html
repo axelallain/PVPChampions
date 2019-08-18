@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" th:href="@{/img/favicon.png}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>Profil de <span sec:authentication="name"></span> - PVPChampions</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -40,58 +40,46 @@
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="index.html" class="simple-text">
+                <a th:href="@{/}" class="simple-text">
                     <img th:src="@{/img/logo.png}" alt="Logo" width="100%">
                 </a>
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="dashboard.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
                 <li class="active">
-                    <a href="user.html">
-                        <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+                    <a th:href="@{/}">
+                        <i class="pe-7s-home"></i>
+                        <p>Accueil</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
-                        <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                    <a th:href="@{/ajouter}">
+                        <i class="pe-7s-plus"></i>
+                        <p>Créer un évènement</p>
+                    </a>
+                </li>
+            	<li>
+                    <a th:href="@{/sulfuron}">
+                        <i class="pe-7s-hammer"></i>
+                        <p>Sulfuron</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
+                    <a th:href="@{/auberdine}">
+                        <i class="pe-7s-shield"></i>
+                        <p>Auberdine</p>
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
-                        <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
+                    <a href="#">
                         <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
+                        <p>Options</p>
                     </a>
                 </li>
 				<li class="active-pro">
-                    <a href="upgrade.html">
+                    <a href="#">
                         <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
+                        <p>Soutenir le projet</p>
                     </a>
                 </li>
             </ul>
@@ -99,7 +87,7 @@
     </div>
 
     <div class="main-panel">
-		<nav class="navbar navbar-default navbar-fixed">
+        <nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -108,21 +96,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">User</a>
+                    <a class="navbar-brand" th:href="@{/}">Accueil</a>
+                    <a class="navbar-brand" th:href="@{/profil}">Profil de <span sec:authentication="name"></span></a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
+                        
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
+                                    <b class="caret hidden-lg hidden-md"></b>
 									<p class="hidden-lg hidden-md">
 										5 Notifications
 										<b class="caret"></b>
@@ -144,37 +127,39 @@
                         </li>
                     </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="">
-                               <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
-                        </li>
-						<li class="separator hidden-lg hidden-md"></li>
-                    </ul>
+                   <div sec:authorize="!isAuthenticated()">
+                    	<ul class="nav navbar-nav navbar-right">
+                        	<li>
+                           		<a th:href="@{/inscription}">
+                               		<p>Inscription</p>
+                            	</a>
+                        	</li>
+                        
+                        	<li>
+                            	<a href="login">
+                                	<p>Se connecter</p>
+                            	</a>
+                        	</li>
+							<li class="separator hidden-lg"></li>
+                    	</ul>
+                    </div>
+                    
+                    <div sec:authorize="isAuthenticated()">
+                    	<ul class="nav navbar-nav navbar-right">
+                        	<li>
+                           		<a th:href="@{/profil}">
+                               		<p><span sec:authentication="name"></span></p>
+                            	</a>
+                        	</li>
+                        
+                        	<li>
+                            	<a href="/logout">
+                                	<p>Déconnexion</p>
+                            	</a>
+                        	</li>
+							<li class="separator hidden-lg"></li>
+                    	</ul>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -186,42 +171,69 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Edit Profile</h4>
+                                <h4 class="title">Modifier mon profil</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form th:action="@{/inscription}" th:object="${cuser}" method="post">
+                                	<input type="hidden" th:field="*{id}" />
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                                <label for="username">Nom d'utilisateur</label>
+                                                <input type="text" class="form-control" placeholder="Votre nom d'utilisateur.." id="username" name="username" th:value="${cuser.username}" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email">
+                                                <label for="password">Mot de passe</label>
+                                                <input type="password" class="form-control" placeholder="Votre mot de passe.." id="password" name="password" th:field="*{password}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        	<select class="selectpicker" multiple data-style="btn-info">
+										  		<option></option>
+											</select>
+										</div>                                      
+                                    </div>
+
+                                    <div class="row">
+                                    	<div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="email">Adresse email</label>
+                                                <input type="email" class="form-control" placeholder="Votre adresse email.." id="email" name="email" th:value="${cuser.email}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="prenom">Prénom</label>
+                                                <input type="text" class="form-control" placeholder="Votre prénom.." id="prenom" name="prenom" th:value="${cuser.prenom}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="nom">Nom</label>
+                                                <input type="text" class="form-control" placeholder="Votre nom.." id="nom" name="nom" th:value="${cuser.nom}" required>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-6">
+                                    	<div class="col-md-4">
                                             <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                                <label for="ville">Ville</label>
+                                                <input type="text" class="form-control" placeholder="Votre ville.." id="ville" name="ville" th:value="${cuser.ville}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                <label for="pays">Pays</label>
+                                                <input type="text" class="form-control" placeholder="Votre pays.." id="pays" name="pays" th:value="${cuser.pays}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="codePostal">Code postal</label>
+                                                <input type="number" class="form-control" placeholder="Votre code postal.." id="codePostal" name="codePostal" th:value="${cuser.codePostal}" required>
                                             </div>
                                         </div>
                                     </div>
@@ -229,43 +241,13 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                <label for="description">Description</label>
+                                                <textarea rows="5" class="form-control" id="description" maxlength="120" placeholder="Une description qui sera visible sur votre page de profil.. (120 caractères maximum)" name="description" th:value="${cuser.description}"></textarea>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Mike">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Confirmer l'inscription</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -279,17 +261,12 @@
                             <div class="content">
                                 <div class="author">
                                      <a href="#">
-                                    <img class="avatar border-gray" th:src="@{/img/faces/face-3.jpg" alt="..."/>
+                                    <img class="avatar border-gray" th:src="@{/img/faces/face-3.jpg}" alt="Image de profil"/>
 
-                                      <h4 class="title">Mike Andrew<br />
-                                         <small>michael24</small>
-                                      </h4>
+                                      <h4 class="title" th:text="${cuser.username}"></h4><br />
                                     </a>
                                 </div>
-                                <p class="description text-center"> "Lamborghini Mercy <br>
-                                                    Your chick she so thirsty <br>
-                                                    I'm in that two seat Lambo"
-                                </p>
+                                <p class="description text-center" th:text="${cuser.description}"></p>
                             </div>
                             <hr>
                             <div class="text-center">
@@ -311,29 +288,14 @@
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               Blog
+                            <a th:href="@{/}">
+                                Aller à l'accueil
                             </a>
                         </li>
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="#">PVPChampions</a>
                 </p>
             </div>
         </footer>

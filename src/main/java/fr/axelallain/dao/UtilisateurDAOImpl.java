@@ -25,14 +25,14 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 
 	@Override
 	public void inscription(Utilisateur utilisateur) {
-		em.persist(utilisateur);
+		em.merge(utilisateur);
 	}
 
 	@Override
-	public Utilisateur findByUsername(String username) {
+	public Utilisateur findByEmail(String email) {
 		Utilisateur utilisateur = em.createQuery(
-				  "SELECT u from Utilisateur u WHERE u.username = :username", Utilisateur.class).
-				  setParameter("username", username).getSingleResult();
+				  "SELECT u from Utilisateur u WHERE u.email = :email", Utilisateur.class).
+				  setParameter("email", email).getSingleResult();
 		return utilisateur;
 	}
 	

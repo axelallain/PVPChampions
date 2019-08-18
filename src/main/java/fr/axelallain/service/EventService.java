@@ -1,13 +1,12 @@
-package fr.axelallain.dao;
+package fr.axelallain.service;
 
 import java.util.List;
 
 import fr.axelallain.entity.Event;
 
-public interface EventDao {
+public interface EventService {
 	
 	List<Event> findAllEventsByServeurId(Long id);
 
 	void ajouter(Event event);
-	
 }

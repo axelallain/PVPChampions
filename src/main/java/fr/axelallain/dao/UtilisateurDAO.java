@@ -10,5 +10,6 @@ public interface UtilisateurDAO {
 	
 	void inscription(Utilisateur utilisateur);
 	
-	Utilisateur findByUsername(String username);
+	Utilisateur findByEmail(String email);
+	
 }

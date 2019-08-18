@@ -39,11 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http
 			.csrf().disable()
-			.authorizeRequests().antMatchers("/connexion", "/inscription", "/auberdine", "/batailles", "/donjons", "/raids", "/sulfuron", "/fonts/**", "/sass/**", "/css/**", "/js/**", "/img/**").permitAll()
+			.authorizeRequests().antMatchers("/**", "/login", "/inscription", "/auberdine", "/batailles", "/donjons", "/raids", "/sulfuron", "/fonts/**", "/sass/**", "/css/**", "/js/**", "/img/**").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
-			.loginPage("/connexion").permitAll()
+			.loginPage("/login").permitAll()
+			.usernameParameter("email")
 			.and()
 			.logout().invalidateHttpSession(true)
 			.clearAuthentication(true)
