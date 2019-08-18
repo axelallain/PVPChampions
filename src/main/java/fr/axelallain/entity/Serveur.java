@@ -8,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,12 +22,31 @@ public class Serveur {
 	@Column(name = "nom", nullable = false, unique = true)
 	private String nom;
 	
-	@Column(name = "type", nullable = false)
-	private String type;
-	
-	@ManyToMany(mappedBy="serveurs")
-	private Collection<Utilisateur> utilisateurs;
-	
 	@OneToMany(mappedBy="serveur", fetch = FetchType.EAGER)
 	private Collection<Event> events;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public Collection<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(Collection<Event> events) {
+		this.events = events;
+	}
+	
 }

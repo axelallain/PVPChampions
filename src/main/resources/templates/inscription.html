@@ -75,12 +75,6 @@
                         <p>Auberdine</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="pe-7s-bell"></i>
-                        <p>Options</p>
-                    </a>
-                </li>
 				<li class="active-pro">
                     <a href="#">
                         <i class="pe-7s-rocket"></i>
@@ -181,23 +175,18 @@
                             <div class="content">
                                 <form th:action="@{/inscription}" th:object="${utilisateur}" method="post">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="username">Nom d'utilisateur</label>
                                                 <input type="text" class="form-control" id="username" placeholder="Votre nom d'utilisateur.." th:field="*{username}" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="password">Mot de passe</label>
                                                 <input type="password" class="form-control" id="password" placeholder="Votre mot de passe.." th:field="*{password}" required>
                                             </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                        	<select class="selectpicker" multiple data-style="btn-info">
-										  		<option></option>
-											</select>
-										</div>                                      
+                                        </div>                                     
                                     </div>
 
                                     <div class="row">

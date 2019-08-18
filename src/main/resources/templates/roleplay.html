@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" th:href="@{/img/favicon.png}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Se connecter - PVPChampions</title>
+	<title>Batailles - PVPChampions</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -57,22 +57,40 @@
                         <p>Accueil</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a th:href="@{/ajouter}">
                         <i class="pe-7s-plus"></i>
                         <p>Créer un évènement</p>
                     </a>
                 </li>
-            	<li>
-                    <a th:href="@{/sulfuron}">
-                        <i class="pe-7s-hammer"></i>
-                        <p>Sulfuron</p>
+                <li>
+                    <a th:href="@{/donjons}">
+                        <i class="pe-7s-way"></i>
+                        <p>Donjons</p>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/auberdine}">
-                        <i class="pe-7s-shield"></i>
-                        <p>Auberdine</p>
+                    <a th:href="@{/raids}">
+                        <i class="pe-7s-gym"></i>
+                        <p>Raids</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a th:href="@{/batailles}">
+                        <i class="pe-7s-hammer"></i>
+                        <p>Batailles</p>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/communautaire}">
+                        <i class="pe-7s-users"></i>
+                        <p>Communautaire</p>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/roleplay}">
+                        <i class="pe-7s-notebook"></i>
+                        <p>Roleplay</p>
                     </a>
                 </li>
 				<li class="active-pro">
@@ -95,8 +113,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" th:href="@{/}">Accueil</a>
-                    <a class="navbar-brand" href="login">Se connecter</a>
+                    <a class="navbar-brand" th:href="@{/connexion}">Accueil</a>
+                    <a class="navbar-brand" href="#" >NOM DU SERVEUR</a>
+                    <a class="navbar-brand" th:href="@{/batailles}">Roleplay</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -166,36 +185,72 @@
 
         <div class="content">
             <div class="container-fluid">
+
                 <div class="row">
-                    <div class="col-md-8">
-                        <div class="card">
+                    <div class="col-md-3">
+                        <div class="card ">
                             <div class="header">
-                                <h4 class="title">Se connecter</h4>
+                                <h4 class="title">Nom de l'event</h4>
+                                <p class="category">Nom du serveur</p>
                             </div>
                             <div class="content">
-                            	<span th:if="${session[SPRING_SECURITY_LAST_EXCEPTION] != null and session[SPRING_SECURITY_LAST_EXCEPTION].message != null}" th:text="${session[SPRING_SECURITY_LAST_EXCEPTION].message}">Invalid credentials</span>
-                                <form action="login" method="POST">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label for="email">Adresse email</label>
-                                                <input type="email" name="email" class="form-control">
-                                            </div>
-                                        </div>
+                                <img th:src="@{/img/moulin.jpeg}" alt="Event image" width="100%">
+                                <div class="footer">
+                                    <div class="stats">
+                                        <i class="fa fa-check"></i> 5 / 5 Joueurs
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="form-group">
-                                                <label for="password">Mot de passe</label>
-                                                <input type="password" name="password" class="form-control">
-                                            </div>
-                                        </div>
+                    <div class="col-md-3">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Nom de l'event</h4>
+                                <p class="category">Nom du serveur</p>
+                            </div>
+                            <div class="content">
+                                <img th:src="@{/img/moulin.jpeg}" alt="Event image" width="100%">
+                                <div class="footer">
+                                    <div class="stats">
+                                        <i class="fa fa-check"></i> 3 / 5 Joueurs
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                    <input type="submit" name="submit" class="btn btn-info btn-fill pull-right" value="Se connecter">
-                                    <div class="clearfix"></div>
-                                </form>
+                    <div class="col-md-3">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Nom de l'event</h4>
+                                <p class="category">Nom du serveur</p>
+                            </div>
+                            <div class="content">
+                                <img th:src="@{/img/moulin.jpeg}" alt="Event image" width="100%">
+                                <div class="footer">
+                                    <div class="stats">
+                                        <i class="fa fa-check"></i> 1 / 5 Joueurs
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card ">
+                            <div class="header">
+                                <h4 class="title">Nom de l'event</h4>
+                                <p class="category">Nom du serveur</p>
+                            </div>
+                            <div class="content">
+                                <img th:src="@{/img/moulin.jpeg}" alt="Event image" width="100%">
+                                <div class="footer">
+                                    <div class="stats">
+                                        <i class="fa fa-check"></i> 37 / 40 Joueurs
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -212,7 +267,7 @@
                             <a th:href="@{/}">
                                 Aller à l'accueil
                             </a>
-                        </li>                        
+                        </li>
                     </ul>
                 </nav>
                 <p class="copyright pull-right">

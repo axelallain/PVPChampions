@@ -2,22 +2,15 @@ package fr.axelallain.entity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "utilisateur")
@@ -56,8 +49,8 @@ public class Utilisateur implements Serializable {
 	@Column(name = "description", nullable = true)
 	private String description;
 	
-	@ManyToMany
-	private Collection<Serveur> serveurs;
+	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
+	private Collection<Event> events;
 	
 	@Column(name = "image")
 	private String image;
@@ -146,12 +139,12 @@ public class Utilisateur implements Serializable {
 		this.description = description;
 	}
 
-	public Collection<Serveur> getServeurs() {
-		return serveurs;
+	public Collection<Event> getEvents() {
+		return events;
 	}
 
-	public void setServeurs(Collection<Serveur> serveurs) {
-		this.serveurs = serveurs;
+	public void setEvents(Collection<Event> events) {
+		this.events = events;
 	}
 
 	public String getImage() {

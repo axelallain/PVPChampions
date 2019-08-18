@@ -75,12 +75,6 @@
                         <p>Auberdine</p>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="pe-7s-bell"></i>
-                        <p>Options</p>
-                    </a>
-                </li>
 				<li class="active-pro">
                     <a href="#">
                         <i class="pe-7s-rocket"></i>
@@ -180,23 +174,42 @@
                             </div>
                             <div class="content">
                                 <form th:action="@{/ajouter}" th:object="${event}" method="post">
+                                	<input type="hidden" id="utilisateur.id" name="utilisateur.id" th:value="${cuserid}" />
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="nom">Nom de l'évènement</label>
-                                                <input type="text" class="form-control" id="nom" placeholder="Le nom de l'évènement.." th:field="*{nom}" required>
+                                                <input type="text" class="form-control" id="name" placeholder="Le nom de l'évènement.." th:field="*{nom}" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="dateParution">Date de l'évènement</label>
-                                                <input type="date" id="dateParution" class="form-control" th:field="*{dateParution}" required>
+                                                <input type="datetime-local" id="dateParution" class="form-control" th:field="*{dateParution}" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                    </div>
+                                    
+                                    <div class="row">
+                                    	<div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="serveur">Serveur de l'évènement</label>
-                                                <input type="text" class="form-control" id="serveur" placeholder="Le serveur de l'évènement..">
+                                                <label for="serveur.id">Serveur de l'évènement</label>
+                                                <select id="serveur.id" class="form-control" name="serveur.id">
+											    	<option value="1">Sulfuron</option>
+											        <option value="2">Auberdine</option>
+											    </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="type">Serveur de l'évènement</label>
+                                                <select id="type" class="form-control" name="type">
+											    	<option value="donjon">Donjon</option>
+											        <option value="raid">Raid</option>
+											        <option value="bataille">Bataille</option>
+											        <option value="communautaire">Communautaire</option>
+											        <option value="roleplay">Roleplay</option>
+											    </select>
                                             </div>
                                         </div>
                                     </div>

@@ -43,5 +43,17 @@ public class ServeurController {
 		
 		return "batailles";
 	}
+	
+	@GetMapping("/communautaire")
+	public String communautaire() {
+		
+		return "communautaire";
+	}
+	
+	@GetMapping("/roleplay")
+	public String roleplay() {
+		
+		return "roleplay";
+	}
 
 }
