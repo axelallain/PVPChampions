@@ -218,6 +218,15 @@ input:focus {
     transition: all 100ms ease-in;
 }
 
+.jumbotron h1 {
+	font-size: 48px !important;
+}
+
+.disabled {
+    pointer-events:none;
+    opacity:0.5;
+}
+
 .fa {
     width: 18px;
     text-align: center;
@@ -724,6 +733,7 @@ fieldset[disabled] .btn-info.active {
     background-color: #1DC7EA;
     opacity: 1;
     filter: alpha(opacity=100);
+    margin-left: 2.4%;
 }
 
 .btn-info.btn-fill:hover, .btn-info.btn-fill:focus, .btn-info.btn-fill:active, .btn-info.btn-fill.active,
@@ -916,6 +926,12 @@ fieldset[disabled] .btn-neutral.active {
     border-radius: 6px;
     padding: 14px 30px;
     font-weight: 400;
+}
+
+.jumbotron a {
+	margin-top: 2%;
+	margin-left: 1%;
+	margin-right: 1%;
 }
 
 .btn-lg.btn-round {
@@ -2306,6 +2322,8 @@ fieldset[disabled] .btn-neutral.active {
     padding: 0;
     background-color: transparent;
     line-height: 30px;
+    margin-top: 4%;
+    margin-bottom: 1%;
 }
 
 .card .footer .legend {
@@ -2323,7 +2341,6 @@ fieldset[disabled] .btn-neutral.active {
 
 .card .footer div {
     display: inline-block;
-    margin-top: 4%;
 }
 
 .card .author {

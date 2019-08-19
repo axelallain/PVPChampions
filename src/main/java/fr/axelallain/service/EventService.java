@@ -9,4 +9,6 @@ public interface EventService {
 	List<Event> findAllEventsByServeurId(Long id);
 
 	void ajouter(Event event);
+	
+	List<Event> findAllEventsByServeurIdAndType (Long id, String type);
 }

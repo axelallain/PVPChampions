@@ -26,5 +26,10 @@ public class EventServiceImpl implements EventService {
 	public void ajouter(Event event) {
 		eventDao.ajouter(event);
 	}
+	
+	@Override
+	public List<Event> findAllEventsByServeurIdAndType (Long id, String type) {
+		return eventDao.findAllEventsByServeurIdAndType(id, type);
+	}
 
 }

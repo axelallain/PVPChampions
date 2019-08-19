@@ -28,5 +28,13 @@ public class EventDaoImpl implements EventDao {
 	public void ajouter(Event event) {
 		em.merge(event);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Event> findAllEventsByServeurIdAndType (Long id, String type) {
+		Query query = em.createQuery("SELECT e FROM Event e WHERE e.serveur.id=:id AND e.type=:type").setParameter("id", id).setParameter("type", type);
+		
+		return (List<Event>) query.getResultList();
+	}
 
 }

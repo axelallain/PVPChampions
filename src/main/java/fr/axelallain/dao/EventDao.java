@@ -10,4 +10,5 @@ public interface EventDao {
 
 	void ajouter(Event event);
 	
+	List<Event> findAllEventsByServeurIdAndType (Long id, String type);
 }

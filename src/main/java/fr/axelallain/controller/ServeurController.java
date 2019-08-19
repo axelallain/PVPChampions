@@ -15,13 +15,28 @@ public class ServeurController {
 	
 	@GetMapping("/sulfuron")
 	public String sulfuron(Model model) {
+		Long serveurid = (long) 1;
 		
+		model.addAttribute("events", eventService.findAllEventsByServeurId(serveurid));
 		
 		return "sulfuron";
 	}
 	
+	@GetMapping("/sulfuron/donjons")
+	public String sulfuronDonjons(Model model) {
+		Long serveurid = (long) 1;
+		String type = "donjon";
+		
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+		
+		return "donjons";
+	}
+	
 	@GetMapping("/auberdine")
-	public String auberdine() {
+	public String auberdine(Model model) {
+		Long serveurid = (long) 2;
+		
+		model.addAttribute("events", eventService.findAllEventsByServeurId(serveurid));
 		
 		return "auberdine";
 	}
