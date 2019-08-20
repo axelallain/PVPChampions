@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" th:href="@{/img/favicon.png}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Profil de <span sec:authentication="name"></span> - PVPChampions</title>
+	<title>Profil - PVPChampions</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -233,30 +233,8 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card card-user">
-                            <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
-                            </div>
-                            <div class="content">
-                                <div class="author">
-                                     <a href="#">
-                                    <img class="avatar border-gray" th:src="@{/img/faces/face-3.jpg}" alt="Image de profil"/>
-
-                                      <h4 class="title" th:text="${cuser.username}"></h4><br />
-                                    </a>
-                                </div>
-                                <p class="description text-center" th:text="${cuser.description}"></p>
-                            </div>
-                            <hr>
-                            <div class="text-center">
-                                <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                                <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
-                            </div>
-                        </div>
+                    	<a th:href="@{'/profil/events/{cuserid}'(cuserid=${cuserid})}" class="btn btn-success btn-fill">Mes évènements</a>
                     </div>
-
                 </div>
             </div>
         </div>

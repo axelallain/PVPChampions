@@ -29,7 +29,48 @@ public class ServeurController {
 		
 		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
 		
-		return "donjons";
+		return "sulfurondonjons";
+	}
+	
+	@GetMapping("/sulfuron/raids")
+	public String sulfuronRaids(Model model) {
+		Long serveurid = (long) 1;
+		String type = "raid";
+		
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+		
+		return "sulfuronraids";
+	}
+	
+	@GetMapping("/sulfuron/batailles")
+	public String sulfuronBatailles(Model model) {
+		Long serveurid = (long) 1;
+		String type = "bataille";
+		
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+		
+		
+		return "sulfuronbatailles";
+	}
+	
+	@GetMapping("/sulfuron/communautaire")
+	public String sulfuronCommunautaire(Model model) {
+		Long serveurid = (long) 1;
+		String type = "communautaire";
+		
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+		
+		return "sulfuroncommunautaire";
+	}
+	
+	@GetMapping("/sulfuron/roleplay")
+	public String sulfuronRoleplay(Model model) {
+		Long serveurid = (long) 1;
+		String type = "roleplay";
+		
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+		
+		return "sulfuronroleplay";
 	}
 	
 	@GetMapping("/auberdine")
@@ -41,34 +82,54 @@ public class ServeurController {
 		return "auberdine";
 	}
 	
-	@GetMapping("/donjons")
-	public String donjons() {
+	@GetMapping("/auberdine/donjons")
+	public String auberdineDonjons(Model model) {
+		Long serveurid = (long) 2;
+		String type = "donjon";
 		
-		return "donjons";
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+				
+		return "auberdinedonjons";
 	}
 	
-	@GetMapping("/raids")
-	public String raids() {
+	@GetMapping("/auberdine/raids")
+	public String auberdineRaids(Model model) {
+		Long serveurid = (long) 2;
+		String type = "raid";
 		
-		return "raids";
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+		
+		return "auberdineraids";
 	}
 	
-	@GetMapping("/batailles")
-	public String batailles() {
+	@GetMapping("/auberdine/batailles")
+	public String auberdineBatailles(Model model) {
+		Long serveurid = (long) 2;
+		String type = "bataille";
 		
-		return "batailles";
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+		
+		return "auberdinebatailles";
 	}
 	
-	@GetMapping("/communautaire")
-	public String communautaire() {
+	@GetMapping("/auberdine/communautaire")
+	public String auberdineCommunautaire(Model model) {
+		Long serveurid = (long) 2;
+		String type = "communautaire";
 		
-		return "communautaire";
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+		
+		return "auberdinecommunautaire";
 	}
 	
-	@GetMapping("/roleplay")
-	public String roleplay() {
+	@GetMapping("/auberdine/roleplay")
+	public String auberdineRoleplay(Model model) {
+		Long serveurid = (long) 2;
+		String type = "roleplay";
 		
-		return "roleplay";
+		model.addAttribute("events", eventService.findAllEventsByServeurIdAndType(serveurid, type));
+		
+		return "auberdineroleplay";
 	}
 
 }

@@ -222,6 +222,35 @@ input:focus {
 	font-size: 48px !important;
 }
 
+.jumbotron {
+	/* background-image: url(/img/banner.jpg) !important; */
+	/* color: white !important; */
+	width: 75% !important;
+	margin: auto !important;
+}
+
+.btn-primary {
+	border-color: #3472F7;
+	color: white !important;
+	background-color: #3472F7 !important;
+}
+
+.btn-primary:hover {
+	border-color: #3472F7 !important;
+	color: white !important;
+	background-color: #3472F7 !important;
+}
+
+.btn-outline-primary {
+	border-color: #3472F7 !important;
+	color: #3472F7 !important;
+}
+
+.btn-outline-primary:hover {
+	color: white !important;
+	background-color: #3472F7 !important;
+}
+
 .disabled {
     pointer-events:none;
     opacity:0.5;

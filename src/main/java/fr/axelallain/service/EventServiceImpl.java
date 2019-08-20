@@ -31,5 +31,20 @@ public class EventServiceImpl implements EventService {
 	public List<Event> findAllEventsByServeurIdAndType (Long id, String type) {
 		return eventDao.findAllEventsByServeurIdAndType(id, type);
 	}
+	
+	@Override
+	public List<Event> findAllEventsByUtilisateurId(Long id) {
+		return eventDao.findAllEventsByUtilisateurId(id);
+	}
+	
+	@Override
+	public void delete(Long id) {
+		eventDao.delete(id);
+	}
+	
+	@Override
+	public Event findEventById(Long id) {
+		return eventDao.findEventById(id);
+	}
 
 }

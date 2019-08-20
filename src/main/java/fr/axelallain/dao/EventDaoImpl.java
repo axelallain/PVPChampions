@@ -36,5 +36,25 @@ public class EventDaoImpl implements EventDao {
 		
 		return (List<Event>) query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Event> findAllEventsByUtilisateurId(Long id) {
+		Query query = em.createQuery("SELECT e FROM Event e WHERE e.utilisateur.id=:id").setParameter("id", id);
+		
+		return (List<Event>) query.getResultList();
+	}
+	
+	@Override
+	public void delete(Long id) {
+		em.createQuery("delete from Event e where e.id=:id").setParameter("id", id).executeUpdate();
+	}
+	
+	@Override
+	public Event findEventById(Long id) {
+		Event event = em.find(Event.class, id);
+		
+		return event;
+	}
 
 }

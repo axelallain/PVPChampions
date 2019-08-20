@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" th:href="@{/img/favicon.png}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Batailles - PVPChampions</title>
+	<title>Donjons de Sulfuron - PVPChampions</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -69,22 +69,34 @@
                         <p>Créer un évènement</p>
                     </a>
                 </li>
-                <li>
-                    <a th:href="@{/donjons}">
+                <li class="active">
+                    <a th:href="@{/sulfuron/donjons}">
                         <i class="pe-7s-way"></i>
                         <p>Donjons</p>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/raids}">
+                    <a th:href="@{/sulfuron/raids}">
                         <i class="pe-7s-gym"></i>
                         <p>Raids</p>
                     </a>
                 </li>
-                <li class="active">
-                    <a th:href="@{/batailles}">
+                <li>
+                    <a th:href="@{/sulfuron/batailles}">
                         <i class="pe-7s-hammer"></i>
                         <p>Batailles</p>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/sulfuron/communautaire}">
+                        <i class="pe-7s-users"></i>
+                        <p>Communautaire</p>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/sulfuron/roleplay}">
+                        <i class="pe-7s-notebook"></i>
+                        <p>Roleplay</p>
                     </a>
                 </li>
 				<li class="active-pro">
@@ -107,9 +119,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" th:href="@{/connexion}">Accueil</a>
-                    <a class="navbar-brand" href="#" >NOM DU SERVEUR</a>
-                    <a class="navbar-brand" th:href="@{/batailles}">Batailles</a>
+                    <a class="navbar-brand" th:href="@{/}">Accueil</a>
+                    <a class="navbar-brand" th:href="@{/sulfuron}" >Sulfuron</a>
+                    <a class="navbar-brand" th:href="@{/donjons}">Donjons</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
@@ -165,74 +177,17 @@
             <div class="container-fluid">
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3" th:each="event : ${events}">
                         <div class="card ">
                             <div class="header">
-                                <h4 class="title">Nom de la bataille</h4>
-                                <p class="category">Nom du serveur</p>
+                                <h4 class="title" th:text="${event.nom}"></h4>
+                                <p class="category" th:text="${event.serveur.nom}"></p>
                             </div>
                             <div class="content">
-                                <img th:src="@{/img/moulin.jpeg}" alt="Event image" width="100%">
-                                <div class="footer">
-                                    <div class="stats">
-                                        <i class="fa fa-check"></i> 5 / 5 Joueurs
-                                    </div>
-                                    <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Participer</a>
-                                    <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Détails</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">Nom de la bataille</h4>
-                                <p class="category">Nom du serveur</p>
-                            </div>
-                            <div class="content">
-                                <img th:src="@{/img/moulin.jpeg}" alt="Event image" width="100%">
-                                <div class="footer">
-                                    <div class="stats">
-                                        <i class="fa fa-check"></i> 3 / 5 Joueurs
-                                    </div>
-                                    <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Participer</a>
-                                    <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Détails</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">Nom de la bataille</h4>
-                                <p class="category">Nom du serveur</p>
-                            </div>
-                            <div class="content">
-                                <img th:src="@{/img/moulin.jpeg}" alt="Event image" width="100%">
+                                <img th:src="@{/img/ragefire.jpg}" alt="Event image" width="100%">
                                 <div class="footer">
                                     <div class="stats">
                                         <i class="fa fa-check"></i> 1 / 5 Joueurs
-                                    </div>
-                                    <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Participer</a>
-                                    <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Détails</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title">Nom de la bataille</h4>
-                                <p class="category">Nom du serveur</p>
-                            </div>
-                            <div class="content">
-                                <img th:src="@{/img/moulin.jpeg}" alt="Event image" width="100%">
-                                <div class="footer">
-                                    <div class="stats">
-                                        <i class="fa fa-check"></i> 37 / 40 Joueurs
                                     </div>
                                     <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Participer</a>
                                     <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Détails</a>

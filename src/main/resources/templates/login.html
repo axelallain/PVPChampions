@@ -57,7 +57,13 @@
                         <p>Accueil</p>
                     </a>
                 </li>
-                <li>
+                <li sec:authorize="!isAuthenticated()" class="disabled">
+                    <a th:href="@{/ajouter}">
+                        <i class="pe-7s-plus"></i>
+                        <p>Créer un évènement</p>
+                    </a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/ajouter}">
                         <i class="pe-7s-plus"></i>
                         <p>Créer un évènement</p>

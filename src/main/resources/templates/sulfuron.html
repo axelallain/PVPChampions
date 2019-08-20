@@ -76,25 +76,25 @@
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/raids}">
+                    <a th:href="@{/sulfuron/raids}">
                         <i class="pe-7s-gym"></i>
                         <p>Raids</p>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/batailles}">
+                    <a th:href="@{/sulfuron/batailles}">
                         <i class="pe-7s-hammer"></i>
                         <p>Batailles</p>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/communautaire}">
+                    <a th:href="@{/sulfuron/communautaire}">
                         <i class="pe-7s-users"></i>
                         <p>Communautaire</p>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/roleplay}">
+                    <a th:href="@{/sulfuron/roleplay}">
                         <i class="pe-7s-notebook"></i>
                         <p>Roleplay</p>
                     </a>
@@ -180,6 +180,7 @@
                             <div class="header">
                                 <h4 class="title" th:text="${event.nom}"></h4>
                                 <p class="category" th:text="${event.serveur.nom}"></p>
+                                <p class="category" th:text="${#temporals.format(event.dateParution, 'dd-MM-yyyy à HH:mm')}"></p>
                             </div>
                             <div class="content">
                                 <img th:src="@{/img/ragefire.jpg}" alt="Event image" width="100%">
@@ -188,7 +189,7 @@
                                         <i class="fa fa-check"></i> 1 / 5 Joueurs
                                     </div>
                                     <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Participer</a>
-                                    <a href="#" class="btn btn-info btn-fill pull-right btn-sm">Détails</a>
+                                    <a th:href="@{'/event/{id}'(id=${event.id})}" class="btn btn-info btn-fill pull-right btn-sm">Détails</a>
                                 </div>
                             </div>
                         </div>
