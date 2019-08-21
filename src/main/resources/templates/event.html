@@ -125,7 +125,7 @@
                         	</li>
                         
                         	<li>
-                            	<a href="login">
+                            	<a th:href="@{/login}">
                                 	<p>Se connecter</p>
                             	</a>
                         	</li>
@@ -155,64 +155,145 @@
 
 
         <div class="content">
-            <div class="container-fluid">
-        		
-        		<div class="row">
-        			<div class="col-md-12">
-        				<h1 class="text-center" th:text="${event.nom}"></h1>
-        			</div>
-        		</div>
-        			
-        		<div class="row">
-        			<div class="col-md-12">
-        				<img th:src="@{/img/ragefire.jpg}" class="center-block" alt="Image de l'event" width="25%">
-        			</div>
-        		</div>
-        			
-        		<div class="row">
-        			<div class="col-md-12">
-        				<p th:text="${#temporals.format(event.dateParution, 'dd-MM-yyyy à HH:mm')}"></p>
-        				<i class="fa fa-check"></i> 1 / 5 Joueurs
-        			</div>
-        		</div>
-        		
-        		<div class="row">
-        			<div class="col-md-12">
-        				<p th:text="${event.serveur.nom}"></p>
-        				<p th:text="${event.type}"></p>
-        			</div>
-        		</div>
-        		
-        		<div class="row">
-        			<div class="col-md-12">
-        				<textarea rows="5" class="form-control" id="description" name="description" th:text="${event.description}" readonly></textarea>
-        			</div>
-        		</div>
-        		
-        		<div class="row text-center">
-        			<div class="col-md-12">
-        				<form action="#">
-							<input type="hidden" name="_method" value="delete" />
-							<a class="btn btn-success btn-fill btn-sm" href="#" role="button">Commenter</a>
-							<button type="submit" id="submitButton" class="btn btn-success btn-fill btn-sm">Participer</button>
-						</form>
-        			</div>
-        		</div> 
-        		
-        		<div class="row">
-        			<div class="col-md-12">
-        				<div class="form-group">
-        					<form>
-						  		<label for="comment">Commentaire :</label>
-						  		<textarea class="form-control" rows="5" id="comment"></textarea>
-						  		<input type="submit" class="btn btn-success btn-fill btn-sm pull-right">
-						  	</form>
-						</div>
-        			</div>
-        		</div>      			
-        	</div>       		
+            <div class="container">
+<div class="row">
+        <div class="col-md-9">
+            <div class="wrapper wrapper-content animated fadeInUp">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="m-b-md">                                 
+                                    <h2 th:text="${event.nom}" class="text-center"></h2>
+                                </div>
+                                <dl class="dl-horizontal">
+                                    <dt>Statut :</dt> <dd><span class="label label-primary">1 / 5 Joueurs</span></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <dl class="dl-horizontal">
+
+                                    <dt>Ajouté par :</dt> <dd th:text="${event.utilisateur.username}"></dd>
+                                    <dt>Serveur :</dt> <dd th:text="${event.serveur.nom}"></dd>
+                                    <dt>Type :</dt> <dd th:text="${event.type}"></dd>
+                                </dl>
+                            </div>
+                            <div class="col-lg-7" id="cluster_info">
+                                <dl class="dl-horizontal">
+
+                                    <dt>Date de l'évènement :</dt> <dd th:text="${#temporals.format(event.dateParution, 'dd-MM-yyyy à HH:mm')}"></dd>
+                                    <dt>Participants:</dt>
+                                    <dd class="project-people">
+                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
+                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png"></a>
+                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png"></a>
+                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar4.png"></a>
+                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png"></a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <dl class="dl-horizontal">
+                                    
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="row m-t-sm">
+                            <div class="col-lg-12">
+                            <div class="panel blank-panel">
+                            <div class="panel-heading">
+                                <div class="panel-options">
+                                    <ul class="nav nav-tabs">                                       
+                                        <dl class="dl-horizontal pull-right">
+                                    		<dt>Commentaires :</dt> <dd>  2</dd>
+                                		</dl>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">
+
+                            <div class="tab-content">
+                            <div class="tab-pane active" id="tab-1">
+                                <div class="feed-activity-list">
+                                
+                                	<div class="feed-element" sec:authorize="isAuthenticated()">                                       
+                                        <div class="media-body ">
+                                            <div class="well">
+                                                <textarea rows="3" class="form-control"></textarea>
+                                                <input type="submit" class="btn btn-success btn-fill btn-sm pull-right" value="Envoyer le commentaire">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="feed-element" sec:authorize="!isAuthenticated()">                                       
+                                        <div class="media-body ">
+                                            <div class="well">
+                                            	<form th:action="@{/login}" method="get">
+                                                	<textarea rows="3" class="form-control" readonly></textarea>
+                                                	<input type="submit" class="btn btn-success btn-fill btn-sm pull-right" value="Connectez-vous pour commenter">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="feed-element">
+                                        <a href="#" class="pull-left">
+                                            <img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="pull-right">Il y a 2 heures</small>
+                                            <strong>Axel Allain</strong> a laissé un commentaire. <br>
+                                            <small class="text-muted">27-08-2019 à 14:32</small>
+                                            <div class="well">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="feed-element">
+                                        <a href="#" class="pull-left">
+                                            <img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="pull-right">Il y a 2 heures</small>
+                                            <strong>Axel Allain</strong> a laissé un commentaire. <br>
+                                            <small class="text-muted">27-08-2019 à 14:32</small>
+                                            <div class="well">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                            </div>
+                                        </div>
+                                    </div>                                   
+                                </div>
+
+                            </div>
+                            </div>
+
+                            </div>
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="wrapper wrapper-content project-manager">
+            	<img th:src="@{/img/ragefire.jpg}" alt="Event image" width="100%">
+            	
+                <h4>Description de l'évènement</h4>
+                <p class="small" th:text="${event.description}"></p>
+            </div>
         </div>
     </div>
+</div>
+        </div>
 
 
         <footer class="footer">
