@@ -52,6 +52,9 @@ public class Utilisateur implements Serializable {
 	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
 	private Collection<Event> events;
 	
+	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
+	private Collection<Commentaire> commentaires;
+	
 	@Column(name = "image")
 	private String image;
 	

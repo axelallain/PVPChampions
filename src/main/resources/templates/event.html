@@ -224,8 +224,12 @@
                                 	<div class="feed-element" sec:authorize="isAuthenticated()">                                       
                                         <div class="media-body ">
                                             <div class="well">
-                                                <textarea rows="3" class="form-control"></textarea>
-                                                <input type="submit" class="btn btn-success btn-fill btn-sm pull-right" value="Envoyer le commentaire">
+                                            	<form th:action="@{/commenter}" th:object="${commentaire}" method="post">	
+                                            		<input type="hidden" id="utilisateur.id" name="utilisateur.id" th:value="${cuserid}" />
+                                            		<input type="hidden" id="event.id" name="event.id" th:value="${event.id}" />
+                                                	<textarea rows="3" class="form-control" id="message" name="message" th:field="*{message}"></textarea>
+                                                	<input type="submit" class="btn btn-success btn-fill btn-sm pull-right" value="Envoyer le commentaire">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -241,32 +245,15 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="feed-element">
-                                        <a href="#" class="pull-left">
+                                    <div class="feed-element" th:each="commentaire : ${commentaires}">
+                                        <div class="pull-left">
                                             <img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png">
-                                        </a>
-                                        <div class="media-body ">
-                                            <small class="pull-right">Il y a 2 heures</small>
-                                            <strong>Axel Allain</strong> a laissé un commentaire. <br>
-                                            <small class="text-muted">27-08-2019 à 14:32</small>
-                                            <div class="well">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                            </div>
                                         </div>
-                                    </div> 
-                                    <div class="feed-element">
-                                        <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png">
-                                        </a>
                                         <div class="media-body ">
-                                            <small class="pull-right">Il y a 2 heures</small>
-                                            <strong>Axel Allain</strong> a laissé un commentaire. <br>
-                                            <small class="text-muted">27-08-2019 à 14:32</small>
-                                            <div class="well">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                            </div>
+                                            <small class="pull-right">Il y a X heures</small>
+                                            <strong th:text="${commentaire.utilisateur.username}"></strong> a laissé un commentaire. <br>
+                                            <small class="text-muted" th:text="${#dates.format(commentaire.dateParution, 'dd MMM yyyy à HH:mm')}"></small>
+                                            <div class="well" th:text="${commentaire.message}"></div>
                                         </div>
                                     </div>                                   
                                 </div>

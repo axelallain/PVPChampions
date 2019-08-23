@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.axelallain.UserPrincipal;
+import fr.axelallain.entity.Commentaire;
 import fr.axelallain.entity.Event;
 import fr.axelallain.entity.Utilisateur;
+import fr.axelallain.service.CommentaireService;
 import fr.axelallain.service.EventService;
 import fr.axelallain.service.ServeurService;
 import fr.axelallain.service.UtilisateurService;
@@ -32,6 +34,9 @@ public class UtilisateurController {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private CommentaireService commentaireService;
 	
 	@GetMapping("/login")
 	public String loginForm() {
@@ -98,6 +103,43 @@ public class UtilisateurController {
         
         modelAndView.setViewName("modifier");
         modelAndView.addObject("event", event);
+        
+        return modelAndView;
+	}
+	
+	@GetMapping("/profil/commentaires/{cuserid}")
+	public String profilCommentaires(@PathVariable Long cuserid, Model model) {
+		UserPrincipal cuser = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        cuserid = cuser.getId();
+        
+        model.addAttribute("commentaires", commentaireService.findAllCommentairesByUtilisateurId(cuserid));
+		
+		return "profilcommentaires";
+	}
+	
+	@DeleteMapping("/profil/commentaires/delete/{id}")
+	public String profilCommentairesDelete(@PathVariable Long id) {
+		commentaireService.delete(id);
+		
+		UserPrincipal cuser = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		return "redirect:/profil/commentaires/" + cuser.getId();
+	}
+	
+	@GetMapping("/profil/commentaires/modifier/{id}")
+	public ModelAndView profilCommentairesModifier(@PathVariable Long id, Model model) {
+		
+		UserPrincipal cuser = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long cuserid = cuser.getId();
+        
+        model.addAttribute("cuserid", cuserid);
+        
+        Commentaire commentaire = commentaireService.findCommentaireById(id);
+        
+        ModelAndView modelAndView = new ModelAndView();
+        
+        modelAndView.setViewName("modifiercommentaire");
+        modelAndView.addObject("commentaire", commentaire);
         
         return modelAndView;
 	}
