@@ -34,26 +34,6 @@ public class UserPrincipal implements UserDetails {
 		return utilisateur.getEmail();
 	}
 	
-	public String getPrenom() {
-		return utilisateur.getPrenom();
-	}
-	
-	public String getNom() {
-		return utilisateur.getNom();
-	}
-	
-	public String getVille() {
-		return utilisateur.getVille();
-	}
-	
-	public String getPays() {
-		return utilisateur.getPays();
-	}
-	
-	public String getCodePostal() {
-		return utilisateur.getCodePostal();
-	}
-	
 	public String getDescription() {
 		return utilisateur.getDescription();
 	}

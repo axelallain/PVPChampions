@@ -31,21 +31,6 @@ public class Utilisateur implements Serializable {
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 	
-	@Column(name = "prenom", nullable = false)
-	private String prenom;
-	
-	@Column(name = "nom", nullable = false)
-	private String nom;
-	
-	@Column(name = "ville", nullable = true)
-	private String ville;
-	
-	@Column(name = "pays", nullable = false)
-	private String pays;
-	
-	@Column(name = "codePostal", nullable = false)
-	private String codePostal;
-	
 	@Column(name = "description", nullable = true)
 	private String description;
 	
@@ -92,46 +77,6 @@ public class Utilisateur implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getVille() {
-		return ville;
-	}
-
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-
-	public String getPays() {
-		return pays;
-	}
-
-	public void setPays(String pays) {
-		this.pays = pays;
-	}
-
-	public String getCodePostal() {
-		return codePostal;
-	}
-
-	public void setCodePostal(String codePostal) {
-		this.codePostal = codePostal;
 	}
 
 	public String getDescription() {
