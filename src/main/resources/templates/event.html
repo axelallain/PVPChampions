@@ -185,13 +185,7 @@
 
                                     <dt>Date de l'évènement :</dt> <dd th:text="${#temporals.format(event.dateParution, 'dd-MM-yyyy à HH:mm')}"></dd>
                                     <dt>Participants:</dt>
-                                    <dd class="project-people">
-                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar4.png"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png"></a>
-                                    </dd>
+
                                 </dl>
                             </div>
                         </div>
@@ -207,9 +201,9 @@
                             <div class="panel blank-panel">
                             <div class="panel-heading">
                                 <div class="panel-options">
-                                    <ul class="nav nav-tabs">                                       
+                                    <ul class="nav nav-tabs">
                                         <dl class="dl-horizontal pull-right">
-                                    		<dt>Commentaires :</dt> <dd>  2</dd>
+                                    		<dt>Commentaires :</dt> <dd th:text="${commentaires.size()}"></dd>
                                 		</dl>
                                     </ul>
                                 </div>
@@ -246,11 +240,7 @@
                                     </div>
                                     
                                     <div class="feed-element" th:each="commentaire : ${commentaires}">
-                                        <div class="pull-left">
-                                            <img alt="image" class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png">
-                                        </div>
                                         <div class="media-body ">
-                                            <small class="pull-right">Il y a X heures</small>
                                             <strong th:text="${commentaire.utilisateur.username}"></strong> a laissé un commentaire. <br>
                                             <small class="text-muted" th:text="${#dates.format(commentaire.dateParution, 'dd MMM yyyy à HH:mm')}"></small>
                                             <div class="well" th:text="${commentaire.message}"></div>
@@ -276,6 +266,11 @@
             	
                 <h4>Description de l'évènement</h4>
                 <p class="small" th:text="${event.description}"></p>
+
+                <form th:action="@{'/event/{id}/participer'(id=${event.id})}" th:object="${event}" method="post">
+                    <input type="submit" class="btn btn-primary btn-fill btn-sm" value="Participer">
+                </form>
+
             </div>
         </div>
     </div>

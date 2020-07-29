@@ -3,14 +3,7 @@ package fr.axelallain.entity;
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "utilisateur")
@@ -37,8 +30,11 @@ public class Utilisateur implements Serializable {
 	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
 	private Collection<Event> events;
 	
-	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="utilisateur")
 	private Collection<Commentaire> commentaires;
+
+	@ManyToMany(mappedBy = "utilisateurs", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Collection<Event> participations;
 	
 	@Column(name = "image")
 	private String image;
@@ -102,5 +98,20 @@ public class Utilisateur implements Serializable {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+
+	public Collection<Commentaire> getCommentaires() {
+		return commentaires;
+	}
+
+	public void setCommentaires(Collection<Commentaire> commentaires) {
+		this.commentaires = commentaires;
+	}
+
+	public Collection<Event> getParticipations() {
+		return participations;
+	}
+
+	public void setParticipations(Collection<Event> participations) {
+		this.participations = participations;
+	}
 }

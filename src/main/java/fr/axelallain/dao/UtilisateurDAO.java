@@ -11,5 +11,7 @@ public interface UtilisateurDAO {
 	void inscription(Utilisateur utilisateur);
 	
 	Utilisateur findByEmail(String email);
+
+	Utilisateur findById(Long id);
 	
 }

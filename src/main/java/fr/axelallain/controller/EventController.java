@@ -1,5 +1,6 @@
 package fr.axelallain.controller;
 
+import fr.axelallain.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class EventController {
 	
 	@Autowired
 	private CommentaireService commentaireService;
+
+	@Autowired
+	private UtilisateurService utilisateurService;
 	
 	@GetMapping("/ajouter")
 	public String ajouterForm(Model model) {
@@ -53,6 +57,19 @@ public class EventController {
 		model.addAttribute("commentaires", commentaireService.findAllCommentairesByEventId(id));
 		
 		return "event";
+	}
+
+	@PostMapping("/event/{id}/participer")
+	public String participer(@PathVariable Long id, Model model) {
+		UserPrincipal cuser = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long cuserid = cuser.getId();
+
+		Event event = eventService.findEventById(id);
+		event.getUtilisateurs().add(utilisateurService.findById(cuserid));
+
+		eventService.ajouter(event);
+
+		return "redirect:/";
 	}
 	
 }

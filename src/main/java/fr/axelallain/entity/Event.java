@@ -3,16 +3,7 @@ package fr.axelallain.entity;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -47,6 +38,13 @@ public class Event {
 	
 	@OneToMany(mappedBy="event", fetch = FetchType.EAGER)
 	private Collection<Commentaire> commentaires;
+
+	@ManyToMany
+	@JoinTable(
+			name = "event_utilisateur",
+			joinColumns = { @JoinColumn(name = "event_id") },
+			inverseJoinColumns = { @JoinColumn(name = "utilisateur_id") } )
+	private Collection<Utilisateur> utilisateurs;
 
 	public Long getId() {
 		return id;
@@ -103,5 +101,20 @@ public class Event {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	
+
+	public Collection<Commentaire> getCommentaires() {
+		return commentaires;
+	}
+
+	public void setCommentaires(Collection<Commentaire> commentaires) {
+		this.commentaires = commentaires;
+	}
+
+	public Collection<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+
+	public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
 }

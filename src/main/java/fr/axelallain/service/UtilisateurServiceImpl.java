@@ -30,5 +30,9 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	public Utilisateur findByEmail(String email) {
 		return utilisateurDao.findByEmail(email);
 	}
-	
+
+	@Override
+	public Utilisateur findById(Long id) {
+		return utilisateurDao.findById(id);
+	}
 }

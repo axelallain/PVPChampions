@@ -35,5 +35,11 @@ public class UtilisateurDAOImpl implements UtilisateurDAO {
 				  setParameter("email", email).getSingleResult();
 		return utilisateur;
 	}
-	
+
+	@Override
+	public Utilisateur findById(Long id) {
+		Utilisateur utilisateur = em.find(Utilisateur.class, id);
+
+		return utilisateur;
+	}
 }
