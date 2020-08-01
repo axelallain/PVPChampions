@@ -180,10 +180,19 @@
                                     </div>
 
                                     <div class="row">
-                                    	<div class="col-md-12">
+                                    	<div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="email">Adresse email</label>
                                                 <input type="email" class="form-control" id="email" placeholder="Votre adresse email.." th:field="*{email}" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="serveur.id">Serveur</label>
+                                                <select id="serveur.id" class="form-control" name="serveur.id">
+                                                    <option value="1">Sulfuron</option>
+                                                    <option value="2">Auberdine</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

@@ -22,8 +22,14 @@ public class Serveur {
 	@Column(name = "nom", nullable = false, unique = true)
 	private String nom;
 	
-	@OneToMany(mappedBy="serveur", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="serveur")
 	private Collection<Event> events;
+
+	@OneToMany(mappedBy = "serveur", fetch = FetchType.EAGER)
+	private Collection<Utilisateur> utilisateurs;
+
+	public Serveur() {
+	}
 
 	public Long getId() {
 		return id;
@@ -48,5 +54,12 @@ public class Serveur {
 	public void setEvents(Collection<Event> events) {
 		this.events = events;
 	}
-	
+
+	public Collection<Utilisateur> getUtilisateurs() {
+		return utilisateurs;
+	}
+
+	public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
+		this.utilisateurs = utilisateurs;
+	}
 }

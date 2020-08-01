@@ -26,6 +26,10 @@ public class Utilisateur implements Serializable {
 	
 	@Column(name = "description", nullable = true)
 	private String description;
+
+	@ManyToOne
+	@JoinColumn(name = "serveur_id")
+	private Serveur serveur;
 	
 	@OneToMany(mappedBy="utilisateur", fetch = FetchType.EAGER)
 	private Collection<Event> events;
@@ -83,20 +87,20 @@ public class Utilisateur implements Serializable {
 		this.description = description;
 	}
 
+	public Serveur getServeur() {
+		return serveur;
+	}
+
+	public void setServeur(Serveur serveur) {
+		this.serveur = serveur;
+	}
+
 	public Collection<Event> getEvents() {
 		return events;
 	}
 
 	public void setEvents(Collection<Event> events) {
 		this.events = events;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 
 	public Collection<Commentaire> getCommentaires() {
@@ -113,5 +117,13 @@ public class Utilisateur implements Serializable {
 
 	public void setParticipations(Collection<Event> participations) {
 		this.participations = participations;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

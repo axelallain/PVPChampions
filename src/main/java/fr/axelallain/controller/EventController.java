@@ -55,6 +55,9 @@ public class EventController {
 		model.addAttribute("cuserid", cuserid);
 		
 		model.addAttribute("commentaires", commentaireService.findAllCommentairesByEventId(id));
+
+		Event event = eventService.findEventById(id);
+		model.addAttribute("participants", event.getUtilisateurs());
 		
 		return "event";
 	}

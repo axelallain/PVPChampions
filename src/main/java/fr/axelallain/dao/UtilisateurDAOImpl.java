@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import fr.axelallain.entity.Commentaire;
 import org.springframework.stereotype.Repository;
 
 import fr.axelallain.entity.Utilisateur;
