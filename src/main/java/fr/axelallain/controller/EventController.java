@@ -40,9 +40,12 @@ public class EventController {
 	
 	@PostMapping("/ajouter")
 	public String ajouterSubmit(Event event) {
+		UserPrincipal cuser = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long cuserid = cuser.getId();
+
 		eventService.ajouter(event);
 		
-		return "redirect:/";
+		return "redirect:/profil/events/" + cuserid;
 	}
 	
 	@GetMapping("/event/{id}")
