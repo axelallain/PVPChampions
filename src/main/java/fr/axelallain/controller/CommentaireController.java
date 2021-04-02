@@ -17,7 +17,7 @@ public class CommentaireController {
 	public String commenter(Commentaire commentaire) {
 		commentaireService.ajouter(commentaire);
 		
-		return "redirect:/";		
+		return "redirect:/event/" + commentaire.getEvent().getId();
 	}
 
 }

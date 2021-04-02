@@ -76,7 +76,7 @@ public class EventController {
 			eventService.ajouter(event);
 		}
 
-		return "redirect:/";
+		return "redirect:/event/" + id;
 	}
 	
 }
