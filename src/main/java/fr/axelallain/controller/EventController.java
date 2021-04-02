@@ -1,5 +1,6 @@
 package fr.axelallain.controller;
 
+import fr.axelallain.entity.Utilisateur;
 import fr.axelallain.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +15,8 @@ import fr.axelallain.entity.Commentaire;
 import fr.axelallain.entity.Event;
 import fr.axelallain.service.CommentaireService;
 import fr.axelallain.service.EventService;
+
+import java.util.ArrayList;
 
 @Controller
 public class EventController {
@@ -72,8 +75,18 @@ public class EventController {
 
 		Event event = eventService.findEventById(id);
 
-		if(event.getUtilisateurs().size() >= 5) {
-			System.out.println("Ce groupe est complet.");
+		ArrayList<Utilisateur> participants = new ArrayList<>(event.getUtilisateurs());
+		if (participants.size() != 0) {
+			for (int i = 0; i < participants.size(); i++) {
+				if (participants.get(i).getId() == cuserid) {
+					System.out.println("Cet utilisateur participe déjà.");
+				} else if (event.getUtilisateurs().size() >= 5) {
+					System.out.println("Ce groupe est complet.");
+				} else {
+					event.getUtilisateurs().add(utilisateurService.findById(cuserid));
+					eventService.ajouter(event);
+				}
+			}
 		} else {
 			event.getUtilisateurs().add(utilisateurService.findById(cuserid));
 			eventService.ajouter(event);
