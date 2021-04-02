@@ -68,9 +68,13 @@ public class EventController {
 		Long cuserid = cuser.getId();
 
 		Event event = eventService.findEventById(id);
-		event.getUtilisateurs().add(utilisateurService.findById(cuserid));
 
-		eventService.ajouter(event);
+		if(event.getUtilisateurs().size() >= 5) {
+			System.out.println("Ce groupe est complet.");
+		} else {
+			event.getUtilisateurs().add(utilisateurService.findById(cuserid));
+			eventService.ajouter(event);
+		}
 
 		return "redirect:/";
 	}

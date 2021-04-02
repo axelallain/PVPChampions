@@ -262,8 +262,11 @@
                 <h4>Description de l'évènement</h4>
                 <p class="small" th:text="${event.description}"></p>
 
-                <form th:action="@{'/event/{id}/participer'(id=${event.id})}" th:object="${event}" method="post">
+                <form th:if="${event.utilisateurs.size() < 5}" th:action="@{'/event/{id}/participer'(id=${event.id})}" th:object="${event}" method="post">
                     <input type="submit" class="btn btn-primary btn-fill btn-sm" value="Participer">
+                </form>
+                <form th:if="${event.utilisateurs.size() >= 5}" th:action="@{'/event/{id}/participer'(id=${event.id})}" th:object="${event}" method="post">
+                    <input type="submit" class="btn btn-primary btn-fill btn-sm" value="Complet" disabled>
                 </form>
 
                 <button type="button" class="btn btn-primary btn-fill btn-sm" data-toggle="modal" data-target="#myModal">Liste des participants</button>
