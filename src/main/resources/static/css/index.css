@@ -1,0 +1,19 @@
+@media (max-width: 1023px) {
+
+    .navbar-default {
+        background-color: #2872BC;
+    }
+
+    .jumbotron h1 {
+        font-size: 20px !important;
+    }
+
+    .jumbotron p {
+        margin-bottom: 35%;
+        font-size: 17px;
+    }
+
+    .btn {
+        border: none !important;
+    }
+}

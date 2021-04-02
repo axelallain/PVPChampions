@@ -39,7 +39,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http
 			.csrf().disable()
-			.authorizeRequests().antMatchers("/**", "/login", "/inscription", "/auberdine", "/batailles", "/donjons", "/raids", "/sulfuron", "/fonts/**", "/sass/**", "/css/**", "/js/**", "/img/**").permitAll()
+			.authorizeRequests().antMatchers(
+					"/login",
+				"/inscription",
+				"/sulfuron",
+				"/sulfuron/donjons",
+				"/sulfuron/raids",
+				"/sulfuron/batailles",
+				"/sulfuron/communautaire",
+				"/sulfuron/roleplay",
+				"/auberdine",
+				"/auberdine/donjons",
+				"/auberdine/raids",
+				"/auberdine/batailles",
+				"/auberdine/communautaire",
+				"/auberdine/roleplay",
+				"/donjons",
+				"/raids",
+				"/batailles",
+				"/communautaire",
+				"/roleplay",
+				"/fonts/**",
+				"/sass/**",
+				"/css/**",
+				"/js/**",
+				"/img/**").permitAll()
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
