@@ -1,0 +1,6 @@
+@media screen and (max-width: 1023px) {
+    .navbar-default .navbar-brand {
+        color: #FFFFFF;
+        font-size: 14px;
+    }
+}
