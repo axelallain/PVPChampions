@@ -77,16 +77,16 @@ public class EventController {
 
 		ArrayList<Utilisateur> participants = new ArrayList<>(event.getUtilisateurs());
 		if (participants.size() != 0) {
-			for (int i = 0; i < participants.size(); i++) {
-				if (participants.get(i).getId() == cuserid) {
-					System.out.println("Cet utilisateur participe déjà.");
-				} else if (event.getUtilisateurs().size() >= 5) {
-					System.out.println("Ce groupe est complet.");
-				} else {
-					event.getUtilisateurs().add(utilisateurService.findById(cuserid));
-					eventService.ajouter(event);
-				}
+
+			if (participants.contains(utilisateurService.findById(cuserid))) {
+				System.out.println("Cet utilisateur participe déjà.");
+			} else if(event.getUtilisateurs().size() >= 5) {
+				System.out.println("Ce groupe est complet.");
+			} else {
+				event.getUtilisateurs().add(utilisateurService.findById(cuserid));
+				eventService.ajouter(event);
 			}
+
 		} else {
 			event.getUtilisateurs().add(utilisateurService.findById(cuserid));
 			eventService.ajouter(event);
