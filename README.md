@@ -30,6 +30,10 @@
     
 4. [Plus d'informations](#plus-dinformations)
 
+5. [Contribuer au projet](#contribuer-au-projet)
+
+6. [Licence](#licence)
+
 <!-- PRÉREQUIS -->
 ## Prérequis
 
@@ -176,3 +180,11 @@ localhost:8080/pugorganizer
 ## Plus d'informations
 
 Pour plus d'informations un PDF est disponible à la racine du projet.
+
+## Contribuer au projet
+
+N'hésitez pas à envoyer vos pull requests pour contribuer au projet !
+
+## Licence
+
+[APACHE 2.0](https://github.com/axelallain/pvpchampions/blob/master/LICENSE)
